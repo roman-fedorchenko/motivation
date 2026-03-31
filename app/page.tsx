@@ -86,7 +86,7 @@ export default function Home() {
             <input 
               className={`w-full p-5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition border ${inputClass}`}
               type="password" 
-              placeholder="Пароль" 
+              placeholder="Пароль(НЕ ВИКОРИСТОВУЙТЕ СТАНДАРТНІ ПАРОЛІ)" 
               onChange={e => setForm({...form, password: e.target.value})} 
             />
             <button 
