@@ -70,37 +70,51 @@ export default function Home() {
   const cardClass = darkMode ? "bg-slate-900 border-slate-800 shadow-none" : "bg-white border-slate-200 shadow-sm";
   const inputClass = darkMode ? "bg-slate-800 border-slate-700 text-white" : "bg-slate-100 border-slate-200 text-slate-900";
 
-  if (!user) {
+if (!user) {
     return (
       <div className={`min-h-screen flex items-center justify-center p-4 font-sans ${themeClass}`}>
-        <div className={`p-10 rounded-3xl border w-full max-w-md ${cardClass}`}>
-          <h1 className="text-4xl font-black text-center mb-8 italic tracking-tighter">
-            {isRegister ? 'РЕЄСТРАЦІЯ' : 'ВХІД'}
+        <div className={`p-12 rounded-[3rem] border w-full max-w-xl ${cardClass}`}>
+          <h1 className="text-6xl font-black text-center mb-10 italic tracking-tighter uppercase">
+            {isRegister ? 'Реєстрація' : 'Вхід'}
           </h1>
-          <div className="space-y-6 text-lg">
+          
+          <div className="space-y-8">
             <input 
-              className={`w-full p-5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition border ${inputClass}`}
-              placeholder="Логін" 
+              className={`w-full p-7 rounded-3xl text-2xl outline-none focus:ring-4 focus:ring-blue-500/50 transition border ${inputClass}`}
+              placeholder="Ваш логін" 
               onChange={e => setForm({...form, username: e.target.value})} 
             />
             <input 
-              className={`w-full p-5 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition border ${inputClass}`}
+              className={`w-full p-7 rounded-3xl text-2xl outline-none focus:ring-4 focus:ring-blue-500/50 transition border ${inputClass}`}
               type="password" 
-              placeholder="Пароль(НЕ ВИКОРИСТОВУЙТЕ СТАНДАРТНІ ПАРОЛІ)" 
+              placeholder="Пароль" 
               onChange={e => setForm({...form, password: e.target.value})} 
             />
+            
             <button 
               onClick={handleAuth} 
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white p-5 rounded-2xl font-black text-xl shadow-lg transition transform active:scale-95"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white p-7 rounded-3xl font-black text-3xl shadow-2xl transition transform active:scale-95 uppercase tracking-tight"
             >
-              {loading ? '...' : (isRegister ? 'СТВОРИТИ' : 'УВІЙТИ')}
+              {loading ? '...' : (isRegister ? 'Створити' : 'Увійти')}
             </button>
+            
             <button 
               onClick={() => setIsRegister(!isRegister)} 
-              className="w-full text-base opacity-60 hover:opacity-100 transition"
+              className="w-full text-xl font-bold opacity-60 hover:opacity-100 transition"
             >
-              {isRegister ? 'Вже є акаунт?' : 'Немає акаунту? Реєстрація'}
+              {isRegister ? '← Вже є акаунт? Увійти' : 'Немає акаунту? Реєстрація →'}
             </button>
+
+            {/* Збільшене попередження */}
+            <div className={`mt-8 p-6 rounded-2xl border-2 shadow-inner ${darkMode ? 'border-amber-900/50 bg-amber-900/20' : 'border-amber-200 bg-amber-50'}`}>
+              <p className={`text-sm md:text-base leading-relaxed font-medium ${darkMode ? 'text-amber-200/80' : 'text-amber-800'}`}>
+                ⚠️ <span className="font-black underline">УВАГА:</span> Це відкритий навчальний проект. 
+                Дані передаються без шифрування. 
+                <span className="block mt-2 text-red-500 font-black uppercase">
+                  НЕ використовуйте свої справжні паролі!
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
